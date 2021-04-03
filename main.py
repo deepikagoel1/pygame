@@ -1,5 +1,5 @@
 import pygame
-
+import random
 #initialise pygame
 pygame.init()
 
@@ -16,6 +16,7 @@ playerImg = pygame.image.load('big.png')
 playerX = 370
 #playerY = 480
 playerY = 10
+playerY_change = 0
 
 #code had beed drawn on the screen
 def player(x, y):
@@ -26,25 +27,33 @@ running = True
 while running:
     #RGB --> Red, Green, Blue
     screen.fill((0, 0 , 0));
-    #playerY += 0.1 #movement from top to bottom
+    playerY += 0.1 #movement from top to bottom
     #playerX += 0.1 #movement in right direction
     #playerX -= 0.1 #movement in left direction
     #playerY -= 0.1 #movement from bottom to top
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running= False
-
+    '''
     #if keystroke is pressed checked whether it is top or bottom
         if event.type ==pygame.KEYDOWN:
-            print("A Keystroke is pressed")
-            if event.key == pygame.K_LEFT:
-                print("LEFT arrow key is pressed")
-            if event.key == pygame.K_RIGHT:
-                print("RIGHT arrow key is pressed")
+            if event.key == pygame.K_DOWN:
+                playerY_change = 0.1
+            if event.key == pygame.K_UP:
+                playerY_change = -0.1
 
         if event.type ==pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                print("Keystroke has been pressed")
+            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                playerY_change = 0
+
+    '''
+
+    #playerY += playerY_change
+
+    if playerY <= 0:
+        playerY = 0
+    elif playerY >= 536:    #set the boundary as Y axis = 600 and image size selected as 64 so 600-64 = 536 and X-axis set to 800 so 800-64 = 
+        playerY = 536
 
     player(playerX, playerY)
     pygame.display.update() #Updating the screen color
