@@ -8,11 +8,11 @@ screen = pygame.display.set_mode((800, 600))
 
 #Title and Icon
 pygame.display.set_caption("Coin Invaders")
-icon = pygame.image.load("money.png")
+icon = pygame.image.load("images/money.png")
 pygame.display.set_icon(icon)
 
 #Player
-playerImg = pygame.image.load('money.png')
+playerImg = pygame.image.load('images/money.png')
 #playerX = 370
 #playerY = 480
 playerY = 10
@@ -24,7 +24,7 @@ playerY_change = 0
 coinsX = random.randint(0, 600)
 coinsY = random.randint(10, 100)
 coinsY_change = 0
-coinsImg = pygame.image.load('dollar.png')
+coinsImg = pygame.image.load('images/dollar.png')
 
 #code had beed drawn on the screen
 def player(x, y):
@@ -33,6 +33,8 @@ def player(x, y):
 def dollar(x, y):
     screen.blit(coinsImg, (x, y))
 
+#Create sprite group
+coinImg = pygame.sprite.Group()
 
 #Game Loop
 running = True

@@ -1,22 +1,27 @@
 import pygame
 import random
+from pygame.locals import *
+
 
 pygame.init()
 
-black = (0, 0 , 0)
-white = (255, 255, 255)
+#define colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
 
-myDisplay = pygame.display.set_mode((1110, 600))
-pygame.display.set_caption("Farm House")
+myDisplay = pygame.display.set_mode((800, 600))
 
-SnowFlakes = []
+coins = []
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 for q in range(100):
-    x = random.randrange(0, 1110)
+    x = random.randrange(0, 800)
     y = random.randrange(0, 590)
-    SnowFlakes.append([x, y])
+    coins.append([x, y])
 
 #.........................................................................................................................................................
 
@@ -24,7 +29,7 @@ clock = pygame.time.Clock()
 farm = False
 background_position = [0, 0]
 
-background_image = pygame.image.load("farm3.jpeg").convert() #https://yputube.com/PneE00FdCdw
+background_image = pygame.image.load("images/money.png")
 while not farm:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -34,9 +39,9 @@ while not farm:
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-for i in SnowFlakes:
+for i in coins:
     i[1] += 1
-    pygame.draw.circle(myDisplay, white, i, 7)
+    background_image = pygame.image.load("images/money.png")
 
     if i[1] > 580:
 
