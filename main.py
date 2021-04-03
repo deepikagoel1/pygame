@@ -12,15 +12,27 @@ icon = pygame.image.load("money.png")
 pygame.display.set_icon(icon)
 
 #Player
-playerImg = pygame.image.load('big.png')
-playerX = 370
+playerImg = pygame.image.load('money.png')
+#playerX = 370
 #playerY = 480
 playerY = 10
+playerX = random.randint(0, 600)
+playerY = random.randint(10, 100)
 playerY_change = 0
+
+#coins
+coinsX = random.randint(0, 600)
+coinsY = random.randint(10, 100)
+coinsY_change = 0
+coinsImg = pygame.image.load('dollar.png')
 
 #code had beed drawn on the screen
 def player(x, y):
     screen.blit(playerImg, (x, y))
+
+def dollar(x, y):
+    screen.blit(coinsImg, (x, y))
+
 
 #Game Loop
 running = True
@@ -31,6 +43,7 @@ while running:
     #playerX += 0.1 #movement in right direction
     #playerX -= 0.1 #movement in left direction
     #playerY -= 0.1 #movement from bottom to top
+    coinsY += 0.1
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running= False
@@ -52,8 +65,16 @@ while running:
 
     if playerY <= 0:
         playerY = 0
-    elif playerY >= 536:    #set the boundary as Y axis = 600 and image size selected as 64 so 600-64 = 536 and X-axis set to 800 so 800-64 = 
-        playerY = 536
+    elif playerY >= 566:    #set the boundary as Y axis = 600 and image size selected as 64 so 600-34 = 536 and X-axis set to 800 so 800-64 = 
+        playerY = 566
+
+    #Dollars
+    if coinsY <= 0:
+        coinsY = 0
+    elif coinsY >= 566:    #set the boundary as Y axis = 600 and image size selected as 64 so 600-34 = 536 and X-axis set to 800 so 800-64 = 
+        coinsY = 566
+
 
     player(playerX, playerY)
+    dollar(coinsX, coinsY)
     pygame.display.update() #Updating the screen color
