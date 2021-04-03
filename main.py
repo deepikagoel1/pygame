@@ -14,7 +14,7 @@ pygame.display.set_icon(icon)
 #Player
 playerImg = pygame.image.load('big.png')
 playerX = 370
-playerY = 480
+playerY = 10
 
 def player():
     screen.blit(playerImg, (playerX, playerY))
